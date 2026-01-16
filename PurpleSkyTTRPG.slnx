@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="PurpleSky.API/PurpleSky.API.csproj" Id="7db82979-c777-4e4e-9715-3896eb8cbb56" />
+  <Project Path="PurpleSkyTTRPG.Application/PurpleSkyTTRPG.Application.csproj" Id="0ae95879-533b-476f-af46-d2f325271362" />
   <Project Path="PurpleSkyTTRPG.Core/PurpleSkyTTRPG.Core.csproj" Id="8e4da58f-dc31-435b-b25d-928ea86f9310" />
   <Project Path="PurpleSkyTTRPG.DataAccess.Postgres/PurpleSkyTTRPG.DataAccess.Postgres.csproj" Id="0dcd4498-3338-4b2e-a46c-df382596fdbc" />
 </Solution>
