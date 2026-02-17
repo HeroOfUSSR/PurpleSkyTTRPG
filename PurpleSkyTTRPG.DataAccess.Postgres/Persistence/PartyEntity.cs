@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
 {
-    public class Party : BaseAudit
+    public class PartyEntity : BaseAudit
     {
         public string PartyName { get; set; } = string.Empty;
 

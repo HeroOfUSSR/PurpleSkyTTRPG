@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
 {
-    public class Character : BaseAudit
+    public class CharacterEntity : BaseAudit
     {
         /// Владелец
         public Guid OwnerId { get; set; }

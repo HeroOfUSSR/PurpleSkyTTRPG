@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
 {
-    public class UserProfile
+    public class UserProfileEntity
     {
         public Guid Id { get; set; }
 
