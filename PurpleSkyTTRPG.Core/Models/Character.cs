@@ -7,7 +7,7 @@ namespace PurpleSkyTTRPG.Core.Models
 {
     public class Character
     {
-        private Character(Guid ownerId, GameSystem system, string characterName, string dataJson, Guid partyId)
+        private Character( Guid id, Guid ownerId, GameSystem system, string characterName, string dataJson, Guid? partyId)
         {
             OwnerId = ownerId;
             System = system;
@@ -15,21 +15,23 @@ namespace PurpleSkyTTRPG.Core.Models
             DataJson = dataJson;
             PartyId = partyId;
         }
+
+        public Guid Id { get; }
         /// Владелец
-        public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; }
 
         /// К какой системе относится
-        public GameSystem System { get; set; }
+        public GameSystem System { get; }
 
         /// Отображаемое имя
-        public string CharacterName { get; set; } = null!;
+        public string CharacterName { get; } = null!;
 
         /// Лист персонажа
-        public string DataJson { get; set; } = null!;
+        public string DataJson { get; } = null!;
 
-        public Guid? PartyId { get; set; }
+        public Guid? PartyId { get; }
 
-        public static (Character Character, string Error) Create(Guid ownerId, GameSystem system, string characterName, string dataJson, Guid partyId)
+        public static (Character Character, string Error) Create(Guid id, Guid ownerId, GameSystem system, string characterName, string dataJson, Guid? partyId)
         {
             var error = string.Empty;
 
@@ -38,7 +40,7 @@ namespace PurpleSkyTTRPG.Core.Models
                 error = "Invalid JSON";
             }
 
-            var character = new Character(ownerId, system, characterName, dataJson, partyId);
+            var character = new Character(id, ownerId, system, characterName, dataJson, partyId);
 
             return (character, error);
         }

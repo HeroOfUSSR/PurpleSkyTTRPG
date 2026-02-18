@@ -1,4 +1,4 @@
-﻿using PurpleSkyTTRPG.DataAccess.Postgres.Enum;
+﻿using PurpleSkyTTRPG.Core.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
