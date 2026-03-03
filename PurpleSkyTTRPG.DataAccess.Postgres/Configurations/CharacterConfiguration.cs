@@ -11,6 +11,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Configurations
     {
         public void Configure(EntityTypeBuilder<CharacterEntity> builder)
         {
+            builder.HasKey(x => x.Id);
 
         }
     }

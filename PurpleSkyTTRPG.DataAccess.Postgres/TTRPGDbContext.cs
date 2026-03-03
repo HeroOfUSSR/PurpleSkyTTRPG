@@ -18,7 +18,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres
 
         public DbSet<PartyEntity> Parties { get; set; }
 
-        public DbSet<UserProfileEntity> UserProfiles { get; set; }
+        public DbSet<ProfileEntity> UserProfiles { get; set; }
 
 
     }

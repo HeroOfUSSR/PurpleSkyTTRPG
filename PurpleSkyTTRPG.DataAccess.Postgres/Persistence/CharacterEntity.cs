@@ -17,9 +17,8 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
         public string CharacterName { get; set; } = null!;
 
         /// Лист персонажа
-        public string DataJson { get; set; } = null!;
+        public string CharData { get; set; } = null!;
 
-        public Guid? PartyId { get; set; }
-
+        public ICollection<LobbyCharacterEntity> LobbyCharacters { get; set; }
     }
 }

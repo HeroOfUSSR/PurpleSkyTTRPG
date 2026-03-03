@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PurpleSkyTTRPG.Core.Enum;
+using PurpleSkyTTRPG.Core.Interfaces;
 using PurpleSkyTTRPG.Core.Models;
 using PurpleSkyTTRPG.DataAccess.Postgres.Models;
 using System;
@@ -8,11 +9,11 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 {
-    public class CharacterRepository
+    public class CharactersRepository : ICharactersRepository
     {
         private readonly TTRPGDbContext _dbContext;
 
-        public CharacterRepository(TTRPGDbContext dbContext)
+        public CharactersRepository(TTRPGDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -20,11 +21,11 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
         public async Task<List<Character>> Get()
         {
             var characterEntities = await _dbContext.Characters
-                .AsNoTracking() 
+                .AsNoTracking()
                 .ToListAsync();
 
             var characters = characterEntities
-                .Select(c => Character.Create(c.Id, c.OwnerId, c.System, c.CharacterName, c.DataJson, c.PartyId).Character)
+                .Select(c => Character.Create(c.Id, c.OwnerId, c.System, c.CharacterName, c.CharData).Character)
                 .ToList();
             // Mapping сделать адекватный в другом методе
 
@@ -40,8 +41,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
                 UpdatedAt = DateTime.UtcNow,
                 OwnerId = character.OwnerId,
                 CharacterName = character.CharacterName,
-                DataJson = character.DataJson,
-                PartyId = character.PartyId
+                CharData = character.DataJson,
             };
 
             await _dbContext.Characters.AddAsync(characterEntity);
@@ -57,11 +57,17 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(c => c.UpdatedAt, c => c.UpdatedAt)
                     .SetProperty(c => c.CharacterName, c => c.CharacterName)
-                    .SetProperty(c => c.DataJson, c => c.DataJson)
-                    .SetProperty(c => c.PartyId, c => c.PartyId)
+                    .SetProperty(c => c.CharData, c => c.CharData)
                     );
 
             return id;
+        }
+
+        public async Task Delete(Guid id)
+        {
+            await _dbContext.Characters
+                .Where(c => c.Id == id)
+                .ExecuteDeleteAsync();
         }
 
     }
