@@ -8,7 +8,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 {
     public class LobbyCharacterNoteEntity : BaseAudit
     {
-        public Guid lobbyCharacterId { get; set; }
+        public Guid LobbyCharacterId { get; set; }
 
         public LobbyCharacterEntity LobbyCharacter { get; set; }
 

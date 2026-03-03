@@ -11,10 +11,10 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
 
         public string PasswordHash { get; set; }
 
-        public string ProfileJson { get; set; } = "{}";
+        public string ProfileJson { get; set; } = "{}"; // А нужен ли он вообще?
 
 
         public ICollection<LobbyProfileEntity> LobbyProfiles { get; set; }
-        public ICollection<ProfileEntity> Profiles { get; set; }
+        public ICollection<LobbyEntity> Lobbies { get; set; }
     }
 }

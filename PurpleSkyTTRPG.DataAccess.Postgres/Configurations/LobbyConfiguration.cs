@@ -7,19 +7,27 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Configurations
 {
-    public class LobbyConfigurtaion : IEntityTypeConfiguration<LobbyEntity>
+    public class LobbyConfiguration : IEntityTypeConfiguration<LobbyEntity>
     {
         public void Configure(EntityTypeBuilder<LobbyEntity> builder)
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasOne(x => x.Lobby)
-                .WithMany(x => x.LobbyProfiles)
-                .HasForeignKey(x => x.LobbyId);
+            builder.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(128);
+
+            builder.Property(x => x.InviteCode)
+                .IsRequired()
+                .HasMaxLength(32);
+
+            builder.HasIndex(x => x.InviteCode)
+                .IsUnique();
 
             builder.HasOne(x => x.Profile)
-                .WithMany(x => x.LobbyProfiles)
-                .HasForeignKey(x => x.ProfileId);
+                .WithMany(x => x.Lobbies)
+                .HasForeignKey(x => x.GmId);
+
         }
     }
 }
