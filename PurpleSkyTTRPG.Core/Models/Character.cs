@@ -1,4 +1,5 @@
-﻿using PurpleSkyTTRPG.Core.Enum;
+﻿using PurpleSkyTTRPG.Core.Constants;
+using PurpleSkyTTRPG.Core.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace PurpleSkyTTRPG.Core.Models
     {
         private Character( Guid id, Guid ownerId, GameSystem system, string characterName, string charData)
         {
+            Id = id;
             OwnerId = ownerId;
             System = system;
             CharacterName = characterName;
@@ -28,15 +30,13 @@ namespace PurpleSkyTTRPG.Core.Models
         /// Лист персонажа
         public string CharData { get; } = null!;
 
-        public Guid? PartyId { get; }
-
-        public static (Character Character, string Error) Create(Guid id, Guid ownerId, GameSystem system, string characterName, string charData,)
+        public static (Character Character, string Error) Create(Guid id, Guid ownerId, GameSystem system, string characterName, string charData)
         {
             var error = string.Empty;
 
-            if (string.IsNullOrEmpty(charData))
+            if (characterName.Length > EntityConstraints.MAX_CHARNAME_LENGTH)
             {
-                error = "Invalid JSON";
+                error = $"Character name cannot be longer than {EntityConstraints.MAX_LOBBYNAME_LENGTH} characters";
             }
 
             var character = new Character(id, ownerId, system, characterName, charData);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PurpleSkyTTRPG.Core.Constants;
 using PurpleSkyTTRPG.DataAccess.Postgres.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Configurations
 
             builder.Property(x => x.CharacterName)
                 .IsRequired()
-                .HasMaxLength(128);
+                .HasMaxLength(EntityConstraints.MAX_CHARNAME_LENGTH);
 
             builder.Property(x => x.CharData)
                 .IsRequired()

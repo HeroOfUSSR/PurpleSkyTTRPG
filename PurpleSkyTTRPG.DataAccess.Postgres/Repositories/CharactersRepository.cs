@@ -41,7 +41,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
                 UpdatedAt = DateTime.UtcNow,
                 OwnerId = character.OwnerId,
                 CharacterName = character.CharacterName,
-                CharData = character.DataJson,
+                CharData = character.CharData,
             };
 
             await _dbContext.Characters.AddAsync(characterEntity);
@@ -50,17 +50,17 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
             return characterEntity.Id;
         }
 
-        public async Task<Guid> Update(Guid id, DateTime createdAt, DateTime updatedAt, Guid ownerId, GameSystem system, string characterName, string dataJson, Guid? partyId)
+        public async Task<Guid> Update(Character character) //Guid id, DateTime createdAt, DateTime updatedAt, Guid ownerId, GameSystem system, string characterName, string dataJson, Guid? partyId)
         {
             await _dbContext.Characters
-                .Where(c => c.Id == id)
+                .Where(c => c.Id == character.Id)
                 .ExecuteUpdateAsync(s => s
-                    .SetProperty(c => c.UpdatedAt, c => c.UpdatedAt)
-                    .SetProperty(c => c.CharacterName, c => c.CharacterName)
-                    .SetProperty(c => c.CharData, c => c.CharData)
+                    .SetProperty(c => c.UpdatedAt, DateTime.UtcNow)
+                    .SetProperty(c => c.CharacterName, character.CharacterName)
+                    .SetProperty(c => c.CharData, character.CharData)
                     );
 
-            return id;
+            return character.Id;
         }
 
         public async Task Delete(Guid id)

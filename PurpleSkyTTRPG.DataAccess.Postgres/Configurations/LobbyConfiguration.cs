@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PurpleSkyTTRPG.Core.Constants;
 using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Configurations
 
             builder.Property(x => x.Name)
                 .IsRequired()
-                .HasMaxLength(128);
+                .HasMaxLength(EntityConstraints.MAX_LOBBYNAME_LENGTH);
 
             builder.Property(x => x.InviteCode)
                 .IsRequired()
-                .HasMaxLength(32);
+                .HasMaxLength(EntityConstraints.MAX_INVITECODE_LENGTH);
 
             builder.HasIndex(x => x.InviteCode)
                 .IsUnique();
