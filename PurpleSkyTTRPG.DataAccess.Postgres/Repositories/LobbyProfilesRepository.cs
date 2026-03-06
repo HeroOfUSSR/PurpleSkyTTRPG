@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PurpleSkyTTRPG.Core.Interfaces;
 using PurpleSkyTTRPG.Core.Models;
 using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 {
-    public class LobbyProfilesRepository
+    public class LobbyProfilesRepository : ILobbyProfilesRepository
     {
         private readonly TTRPGDbContext _dbContext;
 
