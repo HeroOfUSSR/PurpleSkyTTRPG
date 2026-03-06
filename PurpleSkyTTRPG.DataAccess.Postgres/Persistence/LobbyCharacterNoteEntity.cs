@@ -1,5 +1,5 @@
 ﻿using PurpleSkyTTRPG.Core.Enum;
-using PurpleSkyTTRPG.DataAccess.Postgres.Models;
+using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +16,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 
         public string Text { get; set; }
 
-        public NoteVisibility NoteVisibility { get; set; }
+        public NotesVisibility NoteVisibility { get; set; }
 
     }
 }

@@ -2,7 +2,7 @@
 using PurpleSkyTTRPG.Core.Enum;
 using PurpleSkyTTRPG.Core.Interfaces;
 using PurpleSkyTTRPG.Core.Models;
-using PurpleSkyTTRPG.DataAccess.Postgres.Models;
+using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;

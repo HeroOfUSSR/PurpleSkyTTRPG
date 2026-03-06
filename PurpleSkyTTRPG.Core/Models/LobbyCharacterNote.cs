@@ -9,22 +9,22 @@ namespace PurpleSkyTTRPG.Core.Models
     public class LobbyCharacterNote
     {
 
-        private LobbyCharacterNote(Guid id, Guid lobbyCharacterId, string title, string text, NoteVisibility visibility)
+        private LobbyCharacterNote(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibility noteVisibility)
         {
             Id = id;
             LobbyCharacterId = lobbyCharacterId;
             Title = title;
             Text = text;
-            Visibility = visibility;
+            NoteVisibility = noteVisibility;
         }
 
         public Guid Id { get; }
         public Guid LobbyCharacterId { get; }
         public string Title { get; }
         public string Text { get; }
-        public NoteVisibility Visibility { get; }
+        public NotesVisibility NoteVisibility { get; }
 
-        public static (LobbyCharacterNote Note, string Error) Create(Guid id, Guid lobbyCharacterId, string title, string text, NoteVisibility visibility)
+        public static (LobbyCharacterNote LobbyCharacterNote, string Error) Create(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibility noteVisibility)
         {
             var error = string.Empty;
 
@@ -41,7 +41,7 @@ namespace PurpleSkyTTRPG.Core.Models
                 error = "Note text cannot be empty";
             }
 
-            var note = new LobbyCharacterNote(id, lobbyCharacterId, title, text, visibility);
+            var note = new LobbyCharacterNote(id, lobbyCharacterId, title, text, noteVisibility);
 
             return (note, error);
         }

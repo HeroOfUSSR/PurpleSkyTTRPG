@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PurpleSkyTTRPG.DataAccess.Postgres.Models
+namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 {
     public class LobbyCharacterEntity : BaseAudit
     {

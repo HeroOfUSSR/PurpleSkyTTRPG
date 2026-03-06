@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.Core.Enum
 {
-    public enum NoteVisibility
+    public enum NotesVisibility
     {
         PlayerOnly = 1,
         PlayerDM = 2,
