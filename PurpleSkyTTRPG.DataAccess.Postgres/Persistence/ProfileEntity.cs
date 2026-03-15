@@ -16,5 +16,6 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 
         public ICollection<LobbyProfileEntity> LobbyProfiles { get; set; }
         public ICollection<LobbyEntity> Lobbies { get; set; }
+        public ICollection<LobbyInventoryEntity> LobbyInventories { get; set; }
     }
 }

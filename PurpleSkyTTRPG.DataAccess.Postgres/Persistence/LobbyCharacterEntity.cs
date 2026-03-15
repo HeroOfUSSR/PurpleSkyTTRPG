@@ -9,8 +9,6 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
     {
         public Guid LobbyId { get; set; }
         public LobbyEntity Lobby { get; set; }
-
-
         public Guid CharacterId { get; set; }
         public CharacterEntity Character { get; set; }
 

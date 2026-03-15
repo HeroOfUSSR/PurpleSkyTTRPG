@@ -16,5 +16,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
  
         public Guid ProfileId { get; set; }
         public ProfileEntity Profile { get; set; }
+
+        public ICollection<NoteVisibilityEntity> NoteVisibilities { get; set; }
     }
 }

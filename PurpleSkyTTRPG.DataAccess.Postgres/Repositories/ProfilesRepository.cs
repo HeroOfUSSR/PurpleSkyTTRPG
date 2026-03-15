@@ -60,11 +60,13 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
             return profile.Id;
         }
 
-        public async Task Delete(Guid id)
+        public async Task<Guid> Delete(Guid id)
         {
             await _dbContext.Profiles
                 .Where(l => l.Id == id)
                 .ExecuteDeleteAsync();
+
+            return id;
         }
     }
 }

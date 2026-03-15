@@ -22,7 +22,7 @@ namespace PurpleSkyTTRPG.Core.Models
         public Guid LobbyCharacterId { get; }
         public string Title { get; }
         public string Text { get; }
-        public NotesVisibility NoteVisibility { get; }
+        public NotesVisibilityType NoteVisibility { get; }
 
         public static (LobbyCharacterNote LobbyCharacterNote, string Error) Create(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibility noteVisibility)
         {

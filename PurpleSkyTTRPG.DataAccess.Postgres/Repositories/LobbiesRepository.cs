@@ -61,11 +61,13 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
             return lobby.Id;
         }
 
-        public async Task Delete(Guid id)
+        public async Task<Guid> Delete(Guid id)
         {
             await _dbContext.Lobbies
                 .Where(l => l.Id == id)
                 .ExecuteDeleteAsync();
+
+            return id;
         }
 
     }

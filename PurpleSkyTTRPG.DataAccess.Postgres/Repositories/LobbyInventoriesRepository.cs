@@ -1,53 +1,57 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PurpleSkyTTRPG.Core.Interfaces;
 using PurpleSkyTTRPG.Core.Models;
 using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 {
-    public class LobbyCharactersRepository : ILobbyCharactersRepository
+    public class LobbyInventoriesRepository
     {
         private readonly TTRPGDbContext _dbContext;
 
-        public LobbyCharactersRepository(TTRPGDbContext dbContext)
+        public LobbyInventoriesRepository(TTRPGDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<List<LobbyCharacter>> Get()
+        public async Task<List<LobbyInventory>> Get()
         {
-            var lobbyCharacterEntities = await _dbContext.LobbyCharacters
+            var lobbyInventoryEntities = await _dbContext.LobbyInventories
                 .AsNoTracking()
                 .ToListAsync();
 
-            var lobbies = lobbyCharacterEntities
+            var lobbyInventories = lobbyInventoryEntities
                 .Select(l => LobbyCharacter.Create(l.Id, l.LobbyId, l.CharacterId).LobbyCharacter)
                 .ToList();
 
             return lobbies;
         }
 
-        public async Task<Guid> Create(LobbyCharacter lobbyCharacter)
+        public async Task<Guid> Create(LobbyInventory lobbyInventory)
         {
-            var lobbyCharacterEntity = new LobbyCharacterEntity
+            var lobbyInventoryEntity = new LobbyInventoryEntity
             {
-                Id = lobbyCharacter.Id,
+                Id = lobbyInventory.Id,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
-                LobbyId = lobbyCharacter.LobbyId,
-                CharacterId = lobbyCharacter.CharacterId,
+                LobbyId = lobbyInventory.LobbyId,
+                ContributorId = lobbyInventory.ContributorId,
+                Name = lobbyInventory.Name,
+                Description = lobbyInventory.Description,
+                Weight = lobbyInventory.Weight,
             };
 
-            await _dbContext.LobbyCharacters.AddAsync(lobbyCharacterEntity);
+            await _dbContext.LobbyInventories.AddAsync(lobbyInventoryEntity);
             await _dbContext.SaveChangesAsync();
 
-            return lobbyCharacterEntity.Id;
+            return lobbyInventoryEntity.Id;
         }
 
-        public async Task<Guid> Update(LobbyCharacter lobbyCharacter)
+        public async Task<Guid> Update(LobbyInventory lobbyInventory)
         {
             await _dbContext.LobbyCharacters
                 .Where(l => l.Id == lobbyCharacter.Id)
@@ -67,6 +71,5 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 
             return id;
         }
-
     }
 }

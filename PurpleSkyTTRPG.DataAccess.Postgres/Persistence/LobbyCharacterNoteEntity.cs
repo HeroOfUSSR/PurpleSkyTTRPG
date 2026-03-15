@@ -16,7 +16,9 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 
         public string Text { get; set; }
 
-        public NotesVisibility NoteVisibility { get; set; }
+        public NotesVisibilityType NoteVisibility { get; set; }
+
+        public ICollection<NoteVisibilityEntity> NoteVisibilities { get; set; }
 
     }
 }

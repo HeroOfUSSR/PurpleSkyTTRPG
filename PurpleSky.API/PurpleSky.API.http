@@ -1,6 +1,6 @@
 @PurpleSky.API_HostAddress = http://localhost:5187
 
-GET {{PurpleSky.API_HostAddress}}/todos/
+GET {{PurpleSky.API_HostAddress}}/todos
 Accept: application/json
 
 ###
