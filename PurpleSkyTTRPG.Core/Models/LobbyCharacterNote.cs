@@ -9,7 +9,7 @@ namespace PurpleSkyTTRPG.Core.Models
     public class LobbyCharacterNote
     {
 
-        private LobbyCharacterNote(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibility noteVisibility)
+        private LobbyCharacterNote(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibilityType noteVisibility)
         {
             Id = id;
             LobbyCharacterId = lobbyCharacterId;
@@ -24,7 +24,7 @@ namespace PurpleSkyTTRPG.Core.Models
         public string Text { get; }
         public NotesVisibilityType NoteVisibility { get; }
 
-        public static (LobbyCharacterNote LobbyCharacterNote, string Error) Create(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibility noteVisibility)
+        public static (LobbyCharacterNote LobbyCharacterNote, string Error) Create(Guid id, Guid lobbyCharacterId, string title, string text, NotesVisibilityType noteVisibility)
         {
             var error = string.Empty;
 

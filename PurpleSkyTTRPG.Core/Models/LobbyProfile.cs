@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PurpleSkyTTRPG.Core.Models
 {
-    public class LobbyProfile
+    public class LobbyProfile // Вероятнее всего лишняя модель
     {
         private LobbyProfile(Guid id, Guid lobbyId, Guid profileId)
         {

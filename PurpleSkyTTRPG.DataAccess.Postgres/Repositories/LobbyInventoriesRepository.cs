@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PurpleSkyTTRPG.Core.Interfaces;
 using PurpleSkyTTRPG.Core.Models;
 using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 {
-    public class LobbyInventoriesRepository
+    public class LobbyInventoriesRepository : ILobbyInventoriesRepository
     {
         private readonly TTRPGDbContext _dbContext;
 
@@ -25,10 +26,10 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
                 .ToListAsync();
 
             var lobbyInventories = lobbyInventoryEntities
-                .Select(l => LobbyCharacter.Create(l.Id, l.LobbyId, l.CharacterId).LobbyCharacter)
+                .Select(l => LobbyInventory.Create(l.Id, l.LobbyId, l.ContributorId, l.Name, l.Description, l.Weight).LobbyInventory)
                 .ToList();
 
-            return lobbies;
+            return lobbyInventories;
         }
 
         public async Task<Guid> Create(LobbyInventory lobbyInventory)
@@ -53,19 +54,21 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
 
         public async Task<Guid> Update(LobbyInventory lobbyInventory)
         {
-            await _dbContext.LobbyCharacters
-                .Where(l => l.Id == lobbyCharacter.Id)
+            await _dbContext.LobbyInventories
+                .Where(l => l.Id == lobbyInventory.Id)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(l => l.UpdatedAt, DateTime.UtcNow)
-                    .SetProperty(l => l.LobbyId, lobbyCharacter.LobbyId)
-                    .SetProperty(l => l.CharacterId, lobbyCharacter.CharacterId));
+                    .SetProperty(l => l.LobbyId, lobbyInventory.LobbyId)
+                    .SetProperty(l => l.Name, lobbyInventory.Name)
+                    .SetProperty(l => l.Description, lobbyInventory.Description)
+                    .SetProperty(l => l.Weight, lobbyInventory.Weight));
 
-            return lobbyCharacter.Id;
+            return lobbyInventory.Id;
         }
 
         public async Task<Guid> Delete(Guid id)
         {
-            await _dbContext.LobbyCharacters
+            await _dbContext.LobbyInventories
                 .Where(l => l.Id == id)
                 .ExecuteDeleteAsync();
 

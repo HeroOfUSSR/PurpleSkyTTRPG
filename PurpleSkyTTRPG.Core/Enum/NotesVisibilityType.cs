@@ -6,8 +6,7 @@ namespace PurpleSkyTTRPG.Core.Enum
 {
     public enum NotesVisibilityType
     {
-        PlayerOnly = 1,
-        PlayerDM = 2,
-        Everyone = 3,
+        Private = 0,
+        Visible = 1,
     }
 }

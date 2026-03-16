@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace PurpleSkyTTRPG.Core.Enum
 {
-    public enum ItemTag
+    public enum ItemType
     {
-        Private = 0,
-        Visible = 1, 
+        Quest = 0,
+        Misc = 1,
+        Consumable = 2, 
+        Weapon = 3,
+        Armor = 4,
+        Talisman = 5,
     }
 }

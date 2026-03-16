@@ -11,5 +11,8 @@ namespace PurpleSkyTTRPG.Core.Constants
         public const int MAX_LOGIN_LENGTH = 64;
         public const int MAX_INVITECODE_LENGTH = 32;
         public const int MAX_NOTETITLE_LENGTH = 256;
+        public const int MAX_ITEMNAME_LENGTH = 128; 
+        public const int MAX_SKILLNAME_LENGTH = 128;
+        public const int MAX_SPELLNAME_LENGTH = 128;
     }
 }

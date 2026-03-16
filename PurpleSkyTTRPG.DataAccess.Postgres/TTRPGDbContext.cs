@@ -28,5 +28,11 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres
 
         public DbSet<LobbyInventoryEntity> LobbyInventories { get; set; }
 
+        public DbSet<SystemItemEntity> SystemItems { get; set; }
+
+        public DbSet<SystemSkillEntity> SystemSkills { get; set; }
+
+        public DbSet<SystemSpellEntity> SystemSpells { get; set; }
+
     }
 }
