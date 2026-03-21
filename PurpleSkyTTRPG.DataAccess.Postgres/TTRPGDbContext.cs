@@ -2,6 +2,7 @@
 using PurpleSkyTTRPG.DataAccess.Postgres.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace PurpleSkyTTRPG.DataAccess.Postgres
@@ -12,6 +13,11 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres
             : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TTRPGDbContext).Assembly);
         }
 
         public DbSet<CharacterEntity> Characters { get; set; }
@@ -33,6 +39,8 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres
         public DbSet<SystemSkillEntity> SystemSkills { get; set; }
 
         public DbSet<SystemSpellEntity> SystemSpells { get; set; }
+
+        public DbSet<NoteVisibilityEntity> NoteVisibilities { get; set; }
 
     }
 }

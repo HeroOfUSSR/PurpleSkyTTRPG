@@ -10,7 +10,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
     public class NoteVisibilityEntity
     {
         public Guid LobbyCharacterNoteId { get; set; }
-        public LobbyCharacterNote LobbyCharacterNote { get; set; }
+        public LobbyCharacterNoteEntity LobbyCharacterNote { get; set; }
 
 
         public Guid ProfileId { get; set; }
