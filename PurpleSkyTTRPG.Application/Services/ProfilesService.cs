@@ -17,22 +17,22 @@ namespace PurpleSkyTTRPG.Application.Services
             _profilesRepository = profilesRepository;
         }
 
-        public async Task<List<Profile>> GetLobbyCharactersAsync()
+        public async Task<List<Profile>> GetProfilesAsync()
         {
             return await _profilesRepository.Get();
         }
 
-        public async Task<Guid> CreateLobbyCharacterAsync(Profile profile)
+        public async Task<Guid> CreateProfileAsync(Profile profile)
         {
             return await _profilesRepository.Create(profile);
         }
 
-        public async Task<Guid> UpdateLobbyCharacterAsync(Profile profile)
+        public async Task<Guid> UpdateProfileAsync(Profile profile)
         {
             return await _profilesRepository.Update(profile);
         }
 
-        public async Task<Guid> DeleteLobbyCharacterAsync(Guid id)
+        public async Task<Guid> DeleteProfileAsync(Guid id)
         {
             return await _profilesRepository.Delete(id);
         }

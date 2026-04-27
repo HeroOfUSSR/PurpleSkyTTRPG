@@ -46,5 +46,33 @@ namespace PurpleSky.API.Controllers
 
             return Ok(characterId);
         }
+
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<Guid>> UpdateCharacter(Guid id, [FromBody] CharactersRequest request)
+        {
+            var (character, error) = Character.Create(
+                id,
+                request.OwnerId,
+                request.System,
+                request.CharacterName,
+                request.CharData
+                );
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                return BadRequest(error);
+            }
+
+            var characterId = await _charactersService.UpdateCharacterAsync(character);
+
+            return Ok(characterId);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<Guid>> DeleteCharacter(Guid id)
+        {
+            return Ok(await _charactersService.DeleteCharacterAsync(id));
+        }
+
     }
 }

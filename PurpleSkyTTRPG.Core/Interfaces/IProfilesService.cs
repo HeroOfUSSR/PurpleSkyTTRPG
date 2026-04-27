@@ -4,9 +4,9 @@ namespace PurpleSkyTTRPG.Core.Interfaces
 {
     public interface IProfilesService
     {
-        Task<Guid> CreateLobbyCharacterAsync(Profile profile);
-        Task<Guid> DeleteLobbyCharacterAsync(Guid id);
-        Task<List<Profile>> GetLobbyCharactersAsync();
-        Task<Guid> UpdateLobbyCharacterAsync(Profile profile);
+        Task<List<Profile>> GetProfilesAsync();
+        Task<Guid> CreateProfileAsync(Profile profile);
+        Task<Guid> DeleteProfileAsync(Guid id);
+        Task<Guid> UpdateProfileAsync(Profile profile);
     }
 }

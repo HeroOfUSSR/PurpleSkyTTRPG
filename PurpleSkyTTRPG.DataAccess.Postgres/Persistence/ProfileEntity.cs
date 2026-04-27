@@ -11,6 +11,8 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Persistence
 
         public string PasswordHash { get; set; }
 
+        public string Email { get; set; }
+
         public string ProfileJson { get; set; } = "{}"; // А нужен ли он вообще?
 
 
