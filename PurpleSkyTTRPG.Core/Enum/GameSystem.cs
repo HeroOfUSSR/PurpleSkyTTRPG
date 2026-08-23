@@ -5,6 +5,7 @@
         Dnd5e = 1,
         CyberpunkRed = 2,
         Pathfinder2e = 3,
+        VtM = 4,
     }
 
 }

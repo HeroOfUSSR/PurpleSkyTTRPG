@@ -40,6 +40,7 @@ namespace PurpleSkyTTRPG.DataAccess.Postgres.Repositories
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
                 OwnerId = character.OwnerId,
+                System = character.System,
                 CharacterName = character.CharacterName,
                 CharData = character.CharData,
             };
